@@ -15,4 +15,7 @@ def students(request):
     context = {
         'page_obj': page_obj
     }
+
+    if request.htmx:
+        return render(request, 'core/partials/list.html', context)
     return render(request, 'core/index.html', context)

@@ -11,6 +11,10 @@
 
 <tr id="load-more">
     <td colspan="4" class="text-center">
-        <button class="btn btn-primary">Load More</button>
+        <button class="btn btn-primary"
+        hx-get="{% url 'students' %}"
+        hx-target="#load-more"
+        hx-swap="outerHTML"
+        >Load More</button>
     </td>
 </tr>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from core.models import Student
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
@@ -8,7 +9,10 @@ def index(request):
 
 def students(request):
     students = Student.objects.all()
+    paginator = Paginator(students, 2)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
     context = {
-        'students': students
+        'page_obj': page_obj
     }
     return render(request, 'core/index.html', context)
